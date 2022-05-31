@@ -44,7 +44,7 @@ defmodule Max72XX.Array.Buffer do
   def set_pixel(buffer, x, y, state \\ true)
 
   def set_pixel(%__MODULE__{array_size: size, data: data} = buffer, x, y, state)
-      when x > 0 and x < size * @matrix_side and y > 0 and y < @matrix_side do
+      when x >= 0 and x < size * @matrix_side and y >= 0 and y < @matrix_side do
     matrix_idx = trunc(x / @matrix_side)
     offset = x - matrix_idx * @matrix_side + y * @matrix_side
     matrix_buffer = Map.fetch!(data, matrix_idx)
